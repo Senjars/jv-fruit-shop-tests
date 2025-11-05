@@ -1,23 +1,22 @@
 package core.basesyntax.service.impl;
 
-import org.junit.jupiter.api.Test;
-
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ReportWriterImplTest {
 
-    ReportWriter writer = new ReportWriterImpl();
+    private final ReportWriter writer = new ReportWriterImpl();
 
     @Test
-    void writeReport_validFilePath_ok() throws Exception{
+    void writeReport_validFilePath_ok() throws Exception {
         String reportContent = "fruit,quantity\nbanana,10";
         File tempFile = File.createTempFile("report",".txt");
         Path tempPath = tempFile.toPath();
-
 
         writer.writeReport(reportContent, tempFile.toString());
 

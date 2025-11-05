@@ -1,14 +1,15 @@
 package core.basesyntax.service.impl;
 
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ReportServiceImplTest {
 
-    ReportService reportService = new ReportServiceImpl();
+    private final ReportService reportService = new ReportServiceImpl();
 
     @Test
     void generateReport_emptyMap_ok() {
@@ -44,5 +45,4 @@ class ReportServiceImplTest {
         assertTrue(report.contains("banana"));
         assertTrue(report.contains("0"));
     }
-
 }

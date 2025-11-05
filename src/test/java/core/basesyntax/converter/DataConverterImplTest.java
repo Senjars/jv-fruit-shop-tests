@@ -2,15 +2,16 @@ package core.basesyntax.converter;
 
 import core.basesyntax.db.Operation;
 import core.basesyntax.model.FruitTransaction;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DataConverterImplTest {
 
-    DataConverter dataConverter = new DataConverterImpl();
+    private final DataConverter dataConverter = new DataConverterImpl();
 
     @Test
     void convert_nullInput_throwsRuntimeException() {
@@ -81,6 +82,4 @@ class DataConverterImplTest {
         assertEquals(4, actual.get(1).getQuantity());
         assertEquals(Operation.BALANCE, actual.get(1).getOperation());
     }
-
-
 }

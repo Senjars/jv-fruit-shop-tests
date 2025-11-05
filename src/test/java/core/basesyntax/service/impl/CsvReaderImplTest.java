@@ -1,13 +1,14 @@
 package core.basesyntax.service.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CsvReaderImplTest {
 
-    CsvReader reader = new CsvReaderImpl();
+    private final CsvReader reader = new CsvReaderImpl();
 
     @Test
     void read_pathFileNull_throwsRunTimeException() {

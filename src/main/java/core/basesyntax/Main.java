@@ -1,16 +1,28 @@
 package core.basesyntax;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import core.basesyntax.converter.DataConverter;
 import core.basesyntax.converter.DataConverterImpl;
 import core.basesyntax.db.Operation;
 import core.basesyntax.db.Storage;
 import core.basesyntax.model.FruitTransaction;
-import core.basesyntax.service.impl.*;
-import core.basesyntax.strategy.*;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import core.basesyntax.service.impl.CsvReader;
+import core.basesyntax.service.impl.CsvReaderImpl;
+import core.basesyntax.service.impl.FruitShopService;
+import core.basesyntax.service.impl.FruitShopServiceImpl;
+import core.basesyntax.service.impl.ReportService;
+import core.basesyntax.service.impl.ReportServiceImpl;
+import core.basesyntax.service.impl.ReportWriter;
+import core.basesyntax.service.impl.ReportWriterImpl;
+import core.basesyntax.strategy.BalanceOperation;
+import core.basesyntax.strategy.OperationHandler;
+import core.basesyntax.strategy.OperationStrategy;
+import core.basesyntax.strategy.OperationStrategyImpl;
+import core.basesyntax.strategy.PurchaseOperation;
+import core.basesyntax.strategy.ReturnOperation;
+import core.basesyntax.strategy.SupplyOperation;
 
 public class Main {
     public static void main(String[] arg) {
