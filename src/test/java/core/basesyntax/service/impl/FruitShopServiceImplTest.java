@@ -1,5 +1,10 @@
 package core.basesyntax.service.impl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import core.basesyntax.db.Operation;
 import core.basesyntax.model.FruitTransaction;
 import core.basesyntax.strategy.BalanceOperation;
@@ -9,11 +14,6 @@ import core.basesyntax.strategy.ReturnOperation;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class FruitShopServiceImplTest {
 

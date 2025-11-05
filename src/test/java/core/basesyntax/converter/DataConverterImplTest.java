@@ -1,13 +1,13 @@
 package core.basesyntax.converter;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import core.basesyntax.db.Operation;
 import core.basesyntax.model.FruitTransaction;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DataConverterImplTest {
 
@@ -21,14 +21,14 @@ class DataConverterImplTest {
 
     @Test
     void convert_invalidLine_throwsRuntimeException() {
-        List<String> list = List.of("invalid", "list");
+        List<String> list = List.of("operation,fruit,quantity", "invalid", "list");
         assertThrows(RuntimeException.class, () ->
                 dataConverter.convert(list));
     }
 
     @Test
     void convert_validList_ok() {
-        List<String> list = List.of("b,banana,12");
+        List<String> list = List.of("operation,fruit,quantity", "b,banana,12");
         List<FruitTransaction> result = dataConverter.convert(list);
 
         assertNotNull(result);
@@ -48,28 +48,28 @@ class DataConverterImplTest {
 
     @Test
     void convert_invalidLineLength_throwsRuntimeException() {
-        List<String> list = List.of("p,banana");
+        List<String> list = List.of("operation,fruit,quantity", "p,banana");
         assertThrows(RuntimeException.class, () ->
                 dataConverter.convert(list));
     }
 
     @Test
     void convert_invalidQuantity_throwsRuntimeException() {
-        List<String> list = List.of("p,apple,-23");
+        List<String> list = List.of("operation,fruit,quantity", "p,apple,-23");
         assertThrows(RuntimeException.class, () ->
                 dataConverter.convert(list));
     }
 
     @Test
     void convert_invalidOperation_throwsRuntimeException() {
-        List<String> list = List.of("x,banana,23");
+        List<String> list = List.of("operation,fruit,quantity", "x,banana,23");
         assertThrows(RuntimeException.class, () ->
                 dataConverter.convert(list));
     }
 
     @Test
     void convert_multipleValidLines_ok() {
-        List<String> list = List.of("p,banana,12", "b,apple,4");
+        List<String> list = List.of("operation,fruit,quantity", "p,banana,12", "b,apple,4");
         List<FruitTransaction> actual = dataConverter.convert(list);
 
         assertEquals(2, actual.size());

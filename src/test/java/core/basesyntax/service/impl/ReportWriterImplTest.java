@@ -1,12 +1,12 @@
 package core.basesyntax.service.impl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ReportWriterImplTest {
 
@@ -26,7 +26,7 @@ class ReportWriterImplTest {
     }
 
     @Test
-    void writeReport_invalidFilePath_throwsRuntimeException() throws Exception {
+    void writeReport_invalidFilePath_throwsRuntimeException() {
         String reportContent = "fruit,quantity\nbanana,10";
 
         assertThrows(RuntimeException.class, () ->
@@ -36,6 +36,18 @@ class ReportWriterImplTest {
     @Test
     void writeReport_emptyReport_throwsRuntimeException() throws Exception {
         String reportContent = "";
+        File tempFile = File.createTempFile("report", ".txt");
+        Path temPath = tempFile.toPath();
+
+        assertThrows(RuntimeException.class, () ->
+                writer.writeReport(reportContent, temPath.toString()));
+
+        Files.deleteIfExists(temPath);
+    }
+
+    @Test
+    void writeReport_nullReport_throwsRuntimeException() throws Exception {
+        String reportContent = null;
         File tempFile = File.createTempFile("report", ".txt");
         Path temPath = tempFile.toPath();
 
